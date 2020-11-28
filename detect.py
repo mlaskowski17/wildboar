@@ -81,7 +81,7 @@ def detect(save_img=False):
             pred = apply_classifier(pred, modelc, img, im0s)
 
         # check if wild boar
-        x = [True if (i in [21, 11] ) else False for i in pred[0][:, -1]]
+        x = [True if (i in wild_boar_classes ) else False for i in pred[0][:, -1]]
         tmp_pred = pred[0][torch.tensor(x)]
         tmp_pred[:, -1] = 0.
         pred = [tmp_pred]
